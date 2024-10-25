@@ -11,7 +11,6 @@ type LoginProps = {
 const Login = ({ responseAuthentication }: LoginProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>();
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -22,13 +21,13 @@ const Login = ({ responseAuthentication }: LoginProps) => {
       navigate("/dashboard");
       return;
     }
-    setError(res?.message);
+    alert(res?.message);
   };
 
   return (
     <div className="flex bg-custom-bg bg-cover bg-center w-screen h-screen items-center justify-center">
       <Box>
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 w-full md:p-3">
           <p className="text-3xl font-medium text-gray-800">Sign in</p>
           <SignInForm
             password={password}
