@@ -1,0 +1,24 @@
+/* global.css */
+
+/* Importa o Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globais personalizados */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f9fafb; /* Ajuste o background, por exemplo */
+  color: #111827; /* Ajuste a cor padrão do texto */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para links */
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

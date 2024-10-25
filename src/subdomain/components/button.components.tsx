@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 
 type SubmitButtonProps = {
   isClicked: boolean;
-  onClick: () => Promise<void>;
+  onClick?: () => Promise<void>;
   textButton: string;
   onChange: () => void;
 };

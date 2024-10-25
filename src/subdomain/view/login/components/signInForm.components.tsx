@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import SubmitButton from "../../../components/button.components";
 import InputField from "../../../components/input.components";
 
@@ -7,18 +8,18 @@ type SignInFormProps = {
   password: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
-  handleSubmit: () => Promise<void>;
+  onSubmit: () => Promise<void>;
 };
 
 const SignInForm = ({
-  handleSubmit,
+  onSubmit,
   setUsername,
   setPassword,
   password,
   username,
 }: SignInFormProps) => {
   const [isClicked, setIsClicked] = useState(false);
-
+  const { handleSubmit } = useForm();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = async () => {
@@ -40,7 +41,7 @@ const SignInForm = ({
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
       <InputField
         ref={useRef(null)}
         value={username}
@@ -61,10 +62,9 @@ const SignInForm = ({
         ref={buttonRef}
         isClicked={isClicked}
         onChange={handleClick}
-        onClick={handleSubmit}
         textButton={"Sign in"}
       />
-    </div>
+    </form>
   );
 };
 
