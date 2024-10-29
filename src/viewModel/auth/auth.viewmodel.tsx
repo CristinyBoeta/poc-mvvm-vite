@@ -1,6 +1,6 @@
 import type { AuthRepository } from "../../services/repository/auth.repository";
 import { AuthError } from "../../subdomain/shared/utils/authError";
-import type { IAuthViewModel } from "./auth.repository";
+import type { IAuthViewModel } from "./repository/auth.repository";
 
 export class AuthViewModel implements IAuthViewModel {
   constructor(private authRepository: AuthRepository) {}

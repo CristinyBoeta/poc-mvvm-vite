@@ -20,6 +20,7 @@ const SubmitButton = forwardRef<HTMLButtonElement, SubmitButtonProps>(
         aria-pressed={isClicked}
         onClick={onClick}
         onChange={onChange}
+        tabIndex={0}
       >
         <p className="text-lg text-white">{textButton}</p>
       </button>

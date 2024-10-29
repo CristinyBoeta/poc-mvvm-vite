@@ -33,6 +33,7 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           onChange={onChange}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
+          tabIndex={0}
         />
       </div>
     );
