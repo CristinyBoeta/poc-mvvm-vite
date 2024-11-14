@@ -1,14 +1,13 @@
-import { forwardRef } from "react";
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 
 type InputFieldProps = {
   labelText?: string;
   onEnterPress: () => void;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-};
+  iconRight?: ReactNode;
+} & InputHTMLAttributes<HTMLInputElement>;
+
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
-  ({ labelText, value, onChange, onEnterPress, placeholder }, ref) => {
+  ({ labelText, onEnterPress, iconRight, ...rest }, ref) => {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
         onEnterPress();
@@ -25,16 +24,17 @@ const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             {labelText}
           </label>
         )}
-        <input
-          className="w-full p-2 h-14 text-xs md:text-sm outline-none text-gray-800 bg-white border-[1px] rounded-xl border-gray-400"
-          alt="input"
-          ref={ref}
-          value={value}
-          onChange={onChange}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          tabIndex={0}
-        />
+        <div className="relative">
+          <input
+            className="w-full p-2 h-14 text-xs md:text-sm outline-none text-gray-800 bg-white border-[1px] rounded-xl border-gray-400"
+            alt="input"
+            ref={ref}
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+            {...rest}
+          />
+          {iconRight}
+        </div>
       </div>
     );
   }

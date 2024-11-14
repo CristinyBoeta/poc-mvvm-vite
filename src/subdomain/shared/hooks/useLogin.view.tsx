@@ -1,19 +1,19 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { IAuthViewModel } from "../../../viewModel/auth/repository/auth.repository";
+import { signinFormType } from "../validation/login.validation";
 
 type UseLoginProps = {
   responseAuthentication: IAuthViewModel;
 };
 
 const useLogin = ({ responseAuthentication }: UseLoginProps) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const onSubmit = async () => {
-    const res = await responseAuthentication.signIn(username, password);
-    console.log({ res });
+  const onSubmit = async (data: signinFormType) => {
+    const res = await responseAuthentication.signIn(
+      data.username,
+      data.password
+    );
 
     if (res?.authenticated) {
       navigate("/dashboard");
@@ -23,11 +23,7 @@ const useLogin = ({ responseAuthentication }: UseLoginProps) => {
   };
 
   return {
-    setUsername,
-    setPassword,
     onSubmit,
-    username,
-    password,
   };
 };
 

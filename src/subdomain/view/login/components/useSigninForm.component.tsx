@@ -1,9 +1,7 @@
 import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
 
 const useSigninForm = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const { handleSubmit } = useForm();
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = async () => {
@@ -13,11 +11,6 @@ const useSigninForm = () => {
     }, 2000);
   };
 
-  const handleInputChange =
-    (setter: React.Dispatch<React.SetStateAction<string>>) =>
-    (e: React.ChangeEvent<HTMLInputElement>) =>
-      setter(e.target.value);
-
   const handleEnterPress = () => {
     if (buttonRef.current) {
       buttonRef.current.click();
@@ -26,9 +19,7 @@ const useSigninForm = () => {
 
   return {
     handleClick,
-    handleInputChange,
     handleEnterPress,
-    handleSubmit,
     buttonRef,
     isClicked,
   };
