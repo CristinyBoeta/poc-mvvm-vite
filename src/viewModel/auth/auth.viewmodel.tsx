@@ -3,14 +3,12 @@ import { AuthError } from "../../subdomain/shared/utils/authError";
 import type { IAuthViewModel } from "./repository/auth.repository";
 
 export class AuthViewModel implements IAuthViewModel {
-  constructor(private authRepository: AuthRepository) {}
+  constructor(readonly authRepository: AuthRepository) {}
 
   async signIn(
     username: string,
     password: string
-  ): Promise<
-    { authenticated: boolean; message?: string | undefined } | undefined
-  > {
+  ): Promise<{ authenticated: boolean; message?: string } | undefined> {
     try {
       const response = await this.authRepository.signIn(username, password);
       if (response.success) {

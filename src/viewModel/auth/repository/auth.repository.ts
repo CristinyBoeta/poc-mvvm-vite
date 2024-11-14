@@ -1,7 +1,7 @@
 type ResponseSingIn =
   | {
       authenticated: boolean;
-      message?: string | undefined;
+      message?: string;
     }
   | undefined;
 
